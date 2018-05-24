@@ -80,7 +80,6 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
         regTextField = new javax.swing.JTextField();
-        resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,8 +136,6 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
             }
         });
 
-        resetButton.setText("Reset");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,8 +170,6 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resetButton)
-                        .addGap(18, 18, 18)
                         .addComponent(updateButton)))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
@@ -219,7 +214,6 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
-                    .addComponent(resetButton)
                     .addComponent(updateButton))
                 .addGap(21, 21, 21))
         );
@@ -316,7 +310,6 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
     private javax.swing.JTextField pcntTextField;
     private javax.swing.JComboBox<String> placeComboBox;
     private javax.swing.JTextField regTextField;
-    private javax.swing.JButton resetButton;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 
