@@ -8,7 +8,6 @@ package OperationsPackage;
 import DataPackage.StudentClass;
 import DbConnectionPackage.DbConnectionClass;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -19,15 +18,16 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class StudentUpdateClass {
- DbConnectionClass connectionClass = new DbConnectionClass();
+ DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con;//Database Connection object declaration
     Statement statement;
     StudentClass studentClass;
     public StudentUpdateClass() {
         con = connectionClass.ConnectDB();
         studentClass = new StudentClass();
     }
+    // Function to update student starts
     public void updateStudent(StudentClass studentClass){
          try {
           
@@ -44,5 +44,6 @@ public class StudentUpdateClass {
         
         }
     }
+    // Function to update student ends
     
 }

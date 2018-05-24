@@ -18,15 +18,16 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class StudentRegisterClass {
-    DbConnectionClass connectionClass = new DbConnectionClass();
+    DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con;//Database Connection object declaration
     PreparedStatement  preparedStatement;
     StudentClass studentClass;
     public StudentRegisterClass() {   
         con = connectionClass.ConnectDB();
         studentClass = new StudentClass();
     }
+    // Function to register student starts
     public void registerStudent(StudentClass studentClass){
         try {
             query = "insert into student_table values(?,?,?,?,?,?,?,?)";
@@ -45,4 +46,5 @@ public class StudentRegisterClass {
             Logger.getLogger(StudentRegisterClass.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    // Function to register student ends
 }

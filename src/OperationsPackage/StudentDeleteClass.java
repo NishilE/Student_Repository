@@ -18,13 +18,14 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class StudentDeleteClass {
- DbConnectionClass connectionClass = new DbConnectionClass();
+ DbConnectionClass connectionClass = new DbConnectionClass(); //Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con;//Database Connection object declaration
     PreparedStatement  preparedStatement;
     public StudentDeleteClass() {
         con = connectionClass.ConnectDB();
     }
+    // Function to delete student details starts
     public void deleteStudent(int id){
         try {
             query = "delete from student_table where id = ?";
@@ -37,4 +38,5 @@ public class StudentDeleteClass {
             Logger.getLogger(StudentRegisterClass.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    // Function to delete student details ends
 }

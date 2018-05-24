@@ -19,9 +19,9 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class StudentViewClass {
-    DbConnectionClass connectionClass = new DbConnectionClass();
+    DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con;//Database Connection object declaration
     PreparedStatement  preparedStatement;
     StudentClass studentClass;
     ResultSet studentResultSet;
@@ -31,6 +31,7 @@ public class StudentViewClass {
         studentClass = new StudentClass();
         
     }
+    // Function to view students starts
     public ResultSet viewStudents(){
         try {
             query = "select * from student_table";
@@ -42,6 +43,10 @@ public class StudentViewClass {
         }
       return studentResultSet;  
     }
+    // Function to view student ends
+    
+    
+    // Function to view student starts
     public StudentClass viewStudent(int id){
         try {
             studentClass = new StudentClass();                 
@@ -64,4 +69,5 @@ public class StudentViewClass {
         }
       return studentClass;  
     }
+    // Function to view student ends
 }

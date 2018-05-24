@@ -225,6 +225,8 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
+        
+        //Code to insert student data starts
         StudentClass studentClass = new StudentClass();
         studentClass.setRegN0(Integer.parseInt(regTextField.getText()));
         studentClass.setStudentName(String.valueOf(nameTextField.getText()));
@@ -236,6 +238,8 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
         studentClass.setStudentPercentage(Float.parseFloat(pcntTextField.getText()));
         StudentRegisterClass registerClass = new StudentRegisterClass();
         registerClass.registerStudent(studentClass);
+        //Code to insert student data ends
+        
         StudentHomeFrame homeFrame = new StudentHomeFrame();
         homeFrame.setVisible(true);
         this.dispose();
@@ -254,6 +258,7 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
+        //Code to reset values starts
         regTextField.setText("");
         nameTextField.setText("");
         addressTextField.setText("");
@@ -263,6 +268,7 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
         placeComboBox.setSelectedIndex(1);
         classComboBox.setSelectedIndex(1);
         divisionComboBox.setSelectedIndex(1);
+        //Code to reset values ends
     }//GEN-LAST:event_resetButtonActionPerformed
 
     /**
@@ -322,7 +328,7 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     private javax.swing.JButton registerButton;
     private javax.swing.JButton resetButton;
     // End of variables declaration//GEN-END:variables
-
+   // Function to load places to the combo box starts
     private void viewPlaces() {
        try {
              
@@ -338,7 +344,9 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
+   // Function to load places to the combo box ends
+    
+    // Function to load classes to the combo box starts
     private void viewClasses() {
          try {
              classComboBox.removeAllItems();
@@ -352,7 +360,8 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
+    // Function to load classes to the combo box ends
+    // Function to load divisions to the combo box starts
     private void viewDivisions() {
          try {
              divisionComboBox.removeAllItems();
@@ -366,4 +375,5 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
+    // Function to load classes to the combo box enda
 }

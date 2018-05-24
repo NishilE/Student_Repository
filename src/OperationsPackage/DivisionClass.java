@@ -18,14 +18,16 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class DivisionClass {
-DbConnectionClass connectionClass = new DbConnectionClass();
+   
+   DbConnectionClass connectionClass = new DbConnectionClass(); //Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con; //Database Connection object declaration
     PreparedStatement  preparedStatement;
     ResultSet studentResultSet;
     public DivisionClass() {
         this.con = connectionClass.ConnectDB();
     }
+     // Function for view divisions starts
        public ResultSet viewDivisions(){
         try {
             query = "select * from division_table";
@@ -37,4 +39,5 @@ DbConnectionClass connectionClass = new DbConnectionClass();
         }
       return studentResultSet;  
     }
+       // Function for view divisions ends
 }

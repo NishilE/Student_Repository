@@ -18,14 +18,15 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class StandardsClass {
-DbConnectionClass connectionClass = new DbConnectionClass();
+DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con; //Database Connection object declaration
     PreparedStatement  preparedStatement;
     ResultSet studentResultSet;
     public StandardsClass() {
         this.con = connectionClass.ConnectDB();
     }
+    // Function to view classes starts 
     public ResultSet viewClasses(){
         try {
             query = "select * from class_table";
@@ -37,5 +38,5 @@ DbConnectionClass connectionClass = new DbConnectionClass();
         }
       return studentResultSet;  
     }
-    
+    // Function to view classes ends
 }

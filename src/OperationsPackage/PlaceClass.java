@@ -19,9 +19,9 @@ import java.util.logging.Logger;
  * @author Rishad Kavad
  */
 public class PlaceClass {
-    DbConnectionClass connectionClass = new DbConnectionClass();
+    DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization
     String query = "";
-    Connection con;
+    Connection con; //Database Connection object declaration
     PreparedStatement  preparedStatement;
     ResultSet studentResultSet;
 
@@ -29,6 +29,7 @@ public class PlaceClass {
         this.con = connectionClass.ConnectDB();
         
     }
+    // Function to view place starts
        public ResultSet viewPlaces(){
         try {
             query = "select * from place_table";
@@ -40,4 +41,5 @@ public class PlaceClass {
         }
       return studentResultSet;  
     }
+       // Function to view place ends
 }

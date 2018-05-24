@@ -31,7 +31,7 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
      */
     public StudentUpdateFrame() {
         initComponents();
-        regTextField.setEditable(false);
+        regTextField.setEditable(false);//Code to make text box non-editable
          genderComboBox.removeAllItems();
              genderComboBox.addItem("Select");
              genderComboBox.addItem("Male");
@@ -231,6 +231,7 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
+        //Code to update students starts
         studentClass2  = new StudentClass();
         studentClass2.setRegN0(StudentDetailsManagement.ID);
          studentClass2.setStudentName(String.valueOf(nameTextField.getText()));
@@ -240,7 +241,7 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
         studentClass2.setStudentClass(String.valueOf(classComboBox.getSelectedItem()));
         studentClass2.setStudentDivision(String.valueOf(divisionComboBox.getSelectedItem()));
         studentClass2.setStudentPercentage(Float.parseFloat(pcntTextField.getText()));
-        
+        //Code to update students ends
         StudentUpdateClass studentUpdateClass = new StudentUpdateClass();
         studentUpdateClass.updateStudent(studentClass2);
         StudentHomeFrame homeFrame = new StudentHomeFrame();
@@ -312,7 +313,8 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
     private javax.swing.JTextField regTextField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
-
+    
+    //Function for view places in combo box starts
     private void viewPlaces() {
        try {
              
@@ -328,8 +330,10 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
-    private void viewClasses() {
+    //Function for view places in combo box ends
+    
+    //Function for view classes in combo box starts
+     private void viewClasses() {
          try {
              classComboBox.removeAllItems();
              classComboBox.addItem("Select");
@@ -342,7 +346,9 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
+    //Function for view classes in combo box ends
+     
+     //Function for view divisions in combo box starts
     private void viewDivisions() {
          try {
              divisionComboBox.removeAllItems();
@@ -356,5 +362,5 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
              Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
+    //Function for view divisions in combo box ends
 }
