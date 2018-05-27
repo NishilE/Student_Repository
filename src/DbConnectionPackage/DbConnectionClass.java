@@ -10,14 +10,14 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil E
  */
 public class DbConnectionClass {
     public Connection ConnectDB(){
         Connection c = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-              c = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_rep_db","root","");
+              c = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_repository","root","");
         
         }
         catch(Exception e){

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil E
  */
 public class StudentUpdateClass {
  DbConnectionClass connectionClass = new DbConnectionClass();//Database Connection class object initialization

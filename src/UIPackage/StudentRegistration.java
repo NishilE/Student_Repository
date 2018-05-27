@@ -9,47 +9,72 @@ import DataPackage.StudentClass;
 import OperationsPackage.DivisionClass;
 import OperationsPackage.PlaceClass;
 import OperationsPackage.StandardsClass;
-import OperationsPackage.StudentUpdateClass;
-import OperationsPackage.StudentViewClass;
+import OperationsPackage.StudentRegisterClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import student.details.management.StudentDetailsManagement;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil E
  */
-public class StudentUpdateFrame extends javax.swing.JFrame {
-    StudentClass studentClass1;
-    StudentClass studentClass2;
-    StudentViewClass studentViewClass;
-    ResultSet rs;
+public class StudentRegistration extends javax.swing.JFrame {
+     ResultSet rs;
     /**
-     * Creates new form StudentUpdateFrame
+     * Creates new form StudentRegisterFrame
      */
-    public StudentUpdateFrame() {
+    public StudentRegistration() {
         initComponents();
-        regTextField.setEditable(false);//Code to make text box non-editable
-         genderComboBox.removeAllItems();
+             genderComboBox.removeAllItems();
              genderComboBox.addItem("Select");
              genderComboBox.addItem("Male");
              genderComboBox.addItem("Female");
              genderComboBox.addItem("Other");
         
-         viewPlaces();// Function to view places
-         viewClasses();// Function to view classes
-         viewDivisions();// Function to view divisions 
-        
-        
-        studentViewClass = new StudentViewClass();
-        studentClass1 = new StudentClass();
-        studentClass1 = studentViewClass.viewStudent(StudentDetailsManagement.ID);
-        regTextField.setText(String.valueOf(StudentDetailsManagement.ID));
-        nameTextField.setText(studentClass1.getStudentName());
-        addressTextField.setText(studentClass1.getStudentAddress());
-        pcntTextField.setText(String.valueOf(studentClass1.getStudentPercentage()));
+         //  to view places
+         try {
+             
+             placeComboBox.removeAllItems();
+             placeComboBox.addItem("Select");
+             PlaceClass placeClass = new PlaceClass();
+             rs = placeClass.viewPlaces();
+             while(rs.next()){
+                 
+                 placeComboBox.addItem(rs.getString("place_name"));
+                 
+             }} catch (SQLException ex) {
+             Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       // to view classes
+                
+    
+         try {
+             classComboBox.removeAllItems();
+             classComboBox.addItem("Select");
+             StandardsClass standardsClass = new StandardsClass();
+             rs = standardsClass.viewClasses();
+             while(rs.next()){
+                 classComboBox.addItem(rs.getString("class_name"));
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    
+        // to view divisions
+        try {
+             divisionComboBox.removeAllItems();
+             divisionComboBox.addItem("Select");
+             DivisionClass divisionClass = new DivisionClass();
+             rs = divisionClass.viewDivisions();
+             while(rs.next()){
+                 divisionComboBox.addItem(rs.getString("division"));
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         
     }
 
     /**
@@ -61,48 +86,51 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        nameTextField = new javax.swing.JTextField();
-        backButton = new javax.swing.JButton();
-        genderComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        placeComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        regTextField = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
+        genderComboBox = new javax.swing.JComboBox<>();
+        placeComboBox = new javax.swing.JComboBox<>();
         addressTextField = new javax.swing.JTextField();
         classComboBox = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
         divisionComboBox = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         pcntTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        updateButton = new javax.swing.JButton();
-        regTextField = new javax.swing.JTextField();
+        registerButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Student Registration");
+
+        jLabel2.setText("Register No.");
+
         jLabel3.setText("Name of the student ");
 
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
-        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel4.setText("Gender");
-
-        placeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Address of the student");
 
         jLabel6.setText("Class");
 
         jLabel7.setText("Division");
+
+        jLabel8.setText("Place");
+
+        jLabel9.setText("Percentage");
+
+        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        placeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         addressTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,14 +140,7 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
 
         classComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel8.setText("Place");
-
         divisionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Student Updation");
-
-        jLabel2.setText("Register No.");
 
         pcntTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,12 +148,24 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Percentage");
-
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
+        registerButton.setText("Register");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+                registerButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -170,8 +203,10 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateButton)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(resetButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(registerButton)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,10 +246,11 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(pcntTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
-                    .addComponent(updateButton))
+                    .addComponent(resetButton)
+                    .addComponent(registerButton))
                 .addGap(21, 21, 21))
         );
 
@@ -225,37 +261,53 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addressTextFieldActionPerformed
 
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+        
+        //Code to insert student data starts
+        StudentClass studentClass = new StudentClass();
+        studentClass.setRegN0(Integer.parseInt(regTextField.getText()));
+        studentClass.setStudentName(String.valueOf(nameTextField.getText()));
+        studentClass.setStudentGender(String.valueOf(genderComboBox.getSelectedItem()));
+        studentClass.setStudentAddress(String.valueOf(addressTextField.getText()));
+        studentClass.setStudentPlace(String.valueOf(placeComboBox.getSelectedItem()));
+        studentClass.setStudentClass(String.valueOf(classComboBox.getSelectedItem()));
+        studentClass.setStudentDivision(String.valueOf(divisionComboBox.getSelectedItem()));
+        studentClass.setStudentPercentage(Float.parseFloat(pcntTextField.getText()));
+        StudentRegisterClass registerClass = new StudentRegisterClass();
+        registerClass.registerStudent(studentClass);
+        //Code to insert student data ends
+        
+        StudenView homeFrame = new StudenView();
+        homeFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registerButtonActionPerformed
+
     private void pcntTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcntTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pcntTextFieldActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-        //Code to update students starts
-        studentClass2  = new StudentClass();
-        studentClass2.setRegN0(StudentDetailsManagement.ID);
-         studentClass2.setStudentName(String.valueOf(nameTextField.getText()));
-        studentClass2.setStudentGender(String.valueOf(genderComboBox.getSelectedItem()));
-        studentClass2.setStudentAddress(String.valueOf(addressTextField.getText()));
-        studentClass2.setStudentPlace(String.valueOf(placeComboBox.getSelectedItem()));
-        studentClass2.setStudentClass(String.valueOf(classComboBox.getSelectedItem()));
-        studentClass2.setStudentDivision(String.valueOf(divisionComboBox.getSelectedItem()));
-        studentClass2.setStudentPercentage(Float.parseFloat(pcntTextField.getText()));
-        //Code to update students ends
-        StudentUpdateClass studentUpdateClass = new StudentUpdateClass();
-        studentUpdateClass.updateStudent(studentClass2);
-        StudentHomeFrame homeFrame = new StudentHomeFrame();
-        homeFrame.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_updateButtonActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        StudentHomeFrame homeFrame = new StudentHomeFrame();
-        homeFrame.setVisible(true);
+        Home home = new Home();
+        home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        //Code to reset values starts
+        regTextField.setText("");
+        nameTextField.setText("");
+        addressTextField.setText("");
+        addressTextField.setText("");
+        pcntTextField.setText("");
+        genderComboBox.setSelectedIndex(1);
+        placeComboBox.setSelectedIndex(1);
+        classComboBox.setSelectedIndex(1);
+        divisionComboBox.setSelectedIndex(1);
+        //Code to reset values ends
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,20 +326,27 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentUpdateFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentUpdateFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentUpdateFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentUpdateFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentUpdateFrame().setVisible(true);
+                new StudentRegistration().setVisible(true);
             }
         });
     }
@@ -311,56 +370,13 @@ public class StudentUpdateFrame extends javax.swing.JFrame {
     private javax.swing.JTextField pcntTextField;
     private javax.swing.JComboBox<String> placeComboBox;
     private javax.swing.JTextField regTextField;
-    private javax.swing.JButton updateButton;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JButton resetButton;
     // End of variables declaration//GEN-END:variables
+   
     
-    //Function for view places in combo box starts
-    private void viewPlaces() {
-       try {
-             
-             placeComboBox.removeAllItems();
-             placeComboBox.addItem("Select");
-             PlaceClass placeClass = new PlaceClass();
-             rs = placeClass.viewPlaces();
-             while(rs.next()){
-                 
-                 placeComboBox.addItem(rs.getString("place_name"));
-                 
-             }} catch (SQLException ex) {
-             Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-    //Function for view places in combo box ends
-    
-    //Function for view classes in combo box starts
-     private void viewClasses() {
-         try {
-             classComboBox.removeAllItems();
-             classComboBox.addItem("Select");
-             StandardsClass standardsClass = new StandardsClass();
-             rs = standardsClass.viewClasses();
-             while(rs.next()){
-                 classComboBox.addItem(rs.getString("class_name"));
-             }
-         } catch (SQLException ex) {
-             Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-    //Function for view classes in combo box ends
-     
-     //Function for view divisions in combo box starts
-    private void viewDivisions() {
-         try {
-             divisionComboBox.removeAllItems();
-             divisionComboBox.addItem("Select");
-             DivisionClass divisionClass = new DivisionClass();
-             rs = divisionClass.viewDivisions();
-             while(rs.next()){
-                 divisionComboBox.addItem(rs.getString("division"));
-             }
-         } catch (SQLException ex) {
-             Logger.getLogger(StudentRegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-    //Function for view divisions in combo box ends
+    // Function to load classes to the combo box ends
+    // Function to load divisions to the combo box starts
+  
+    // Function to load classes to the combo box enda
 }

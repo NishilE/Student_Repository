@@ -7,7 +7,7 @@ package DataPackage;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil E
  */
 public class StudentClass {
     int regN0;

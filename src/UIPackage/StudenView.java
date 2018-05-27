@@ -13,19 +13,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import student.details.management.StudentDetailsManagement;
+import student.repository.StudentRepository;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil E
  */
-public class StudentHomeFrame extends javax.swing.JFrame {
+public class StudenView extends javax.swing.JFrame {
     ResultSet resultSet;
    
     /**
      * Creates new form StudentHomeFrame
      */
-    public StudentHomeFrame() {
+    public StudenView() {
         try {
             initComponents();
             editButton.setVisible(false);  //Set visibility of edit button false     
@@ -48,8 +48,9 @@ public class StudentHomeFrame extends javax.swing.JFrame {
             }
             studentsTable.setModel(model);
         } catch (SQLException ex) {
-            Logger.getLogger(StudentHomeFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudenView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // Code to load students data from the database ends
         // Code to load students data from the database ends
     }
 
@@ -63,7 +64,6 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         studentsTable = new javax.swing.JTable();
@@ -81,14 +81,7 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Students Details Home");
 
-        addButton.setText("Add New");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
-
-        exitButton.setText("Exit");
+        exitButton.setText("Back");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -116,14 +109,14 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("* Click on the row to edit and delete");
 
-        editButton.setText("Edit Row");
+        editButton.setText("Edit");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Delete Row");
+        deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -137,23 +130,17 @@ public class StudentHomeFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(deleteButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addContainerGap(63, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(deleteButton))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,25 +155,18 @@ public class StudentHomeFrame extends javax.swing.JFrame {
                         .addComponent(deleteButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addGap(32, 32, 32)
+                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-        StudentRegisterFrame registerFrame = new StudentRegisterFrame();
-        registerFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_addButtonActionPerformed
-
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
+        Home home=new Home();
+        home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -195,13 +175,13 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         editButton.setVisible(true);   // Set visibility of edit button true 
         deleteButton.setVisible(true); // Set visibility of delete button true 
        int row = studentsTable.getSelectedRow();
-        StudentDetailsManagement.ID = Integer.parseInt(studentsTable.getModel().getValueAt(row, 0).toString()); 
+        StudentRepository.ID = Integer.parseInt(studentsTable.getModel().getValueAt(row, 0).toString()); 
       
     }//GEN-LAST:event_studentsTableMouseClicked
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-        StudentUpdateFrame studentUpdateFrame = new StudentUpdateFrame();
+        StudentUpdation studentUpdateFrame = new StudentUpdation();
         studentUpdateFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_editButtonActionPerformed
@@ -213,8 +193,8 @@ public class StudentHomeFrame extends javax.swing.JFrame {
 if(dialogResult == JOptionPane.YES_OPTION){
   // Saving code here
     StudentDeleteClass deleteClass = new StudentDeleteClass();
-    deleteClass.deleteStudent(StudentDetailsManagement.ID);
-    StudentHomeFrame homeFrame = new StudentHomeFrame();
+    deleteClass.deleteStudent(StudentRepository.ID);
+    StudenView homeFrame = new StudenView();
     homeFrame.setVisible(true);
     this.dispose();
 }
@@ -247,26 +227,26 @@ editButton.setVisible(false);  //Set visibility of edit button false
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudenView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudenView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudenView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudenView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentHomeFrame().setVisible(true);
+                new StudenView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton exitButton;

@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package student.details.management;
+package student.repository;
 
-import UIPackage.StudentHomeFrame;
+import UIPackage.Home;
+import UIPackage.StudenView;
 
 /**
  *
- * @author Rishad Kavad
+ * @author Nishil.E
  */
-public class StudentDetailsManagement {
+public class StudentRepository {
  public static int ID = 0;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        StudentHomeFrame homeFrame = new StudentHomeFrame();
-        homeFrame.setVisible(true);
+        Home home = new Home();
+        home.setVisible(true);
     }
     
 }
